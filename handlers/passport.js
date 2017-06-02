@@ -1,6 +1,7 @@
-const passport       = require("passport"),
+const passport       = require('passport'),
       OAuth2Strategy = require('passport-oauth').OAuth2Strategy,
-      request        = require('request');
+      request        = require('request'),
+      userController = require('../controllers/userController');
 
 // Constants
 const TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID,
@@ -37,14 +38,7 @@ passport.use('twitch', new OAuth2Strategy({
     callbackURL: CALLBACK_URL,
     state: true
   },
-  (accessToken, refreshToken, profile, done) => {
-    profile.accessToken = accessToken;
-    profile.refreshToken = refreshToken;
-    // Securely store user profile in your DB
-    //User.findOrCreate(..., function(err, user) {
-    //  done(err, user);
-    //});
-
-    done(null, profile);
+  async function(accessToken, refreshToken, profile, done) {
+    userController.findOrSave(profile, done);
   }
 ));
