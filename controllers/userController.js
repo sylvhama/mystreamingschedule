@@ -19,3 +19,13 @@ exports.findOrSave = async function(profile, done) {
     done(err, user);
   }
 };
+
+exports.get = async function(){}
+
+exports.update = async function(){}
+
+exports.isSameUser = async function(){}
+
+exports.getActiveSchedules = async function(){}
+
+exports.getAllSchedules = async function(){}
