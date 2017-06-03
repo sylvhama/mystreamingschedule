@@ -27,7 +27,10 @@ const programSchema = new mongoose.Schema({
   color: {
     type: String,
     trim: true,
-    validate: [{validator: value => validator.isHexColor(value), msg: 'Invalid Hex Color'}],
+    validate: [{
+      validator: value => validator.isHexColor(value),
+      msg: 'Invalid Hex Color'
+    }],
     required: 'Please supply a hex color'
   }
 });

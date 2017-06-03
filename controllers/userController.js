@@ -15,7 +15,7 @@ exports.findOrSave = async function(profile, done) {
     const found = await User.findOne(user);
     if(!found) await userModel.save();
     done(null, user);
-  }catch (err) {
+  }catch(err) {
     done(err, user);
   }
 };

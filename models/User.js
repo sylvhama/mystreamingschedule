@@ -18,7 +18,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     lowercase: true,
     trim: true,
-    validate: [{validator: value => validator.isEmail(value), msg: 'Invalid Email Address'}],
+    validate: [{
+      validator: value => validator.isEmail(value),
+      msg: 'Invalid Email Address'
+    }],
     required: 'Please supply an email address'
   },
   name: {
@@ -35,12 +38,20 @@ const userSchema = new mongoose.Schema({
   logo: {
     type: String,
     trim: true,
-    validate: [{validator: value => validator.isURL(value), msg: 'Invalid URL'}],
+    validate: [{
+      validator: value => validator.isURL(value),
+      msg: 'Invalid URL'
+    }]
   },
   streamer: {
     type: Boolean,
     default: false
-  }
+  },
+  follows: [{ 
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    default: []
+  }]
 });
 
 userSchema.index({
