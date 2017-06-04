@@ -20,11 +20,13 @@ exports.findOrSave = async function(profile, done) {
   }
 };
 
-exports.get = async function(){}
-
 exports.update = async function(){}
 
 exports.isSameUser = async function(){}
+
+exports.getStreamers = async function(){}
+
+exports.getFavorites = async function(){}
 
 exports.getActiveSchedules = async function(){}
 

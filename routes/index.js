@@ -15,9 +15,11 @@ router.post('/schedule', authController.isLoggedIn, scheduleController.add);
 router.put('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.isAuthor, scheduleController.update);
 router.delete('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.isAuthor, scheduleController.delete);
 
-router.get('/user/:user_id', authController.isLoggedIn, userController.get);
+router.get('/user/:user_id', authController.isLoggedIn, userController.isSameUser);
 router.put('/user/:user_id', authController.isLoggedIn, userController.update);
 
+router.get('/api/streamers', userController.getStreamers);
+router.get('/api/:user_id/favorites', authController.isLoggedIn, userController.isSameUser, userController.getFavorites);
 router.get('/api/:user_id/active/', userController.getActiveSchedules);
 router.get('/api/:user_id/all/', authController.isLoggedIn, userController.isSameUser, userController.getAllSchedules);
 
