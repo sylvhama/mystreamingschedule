@@ -10,9 +10,30 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
   </head>
   <body>
-    <section id="root">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        min-width: 300px;
+        min-height: 100vh;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        background-color: whitesmoke;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        padding-bottom: 1rem;
+      }
+      p {
+        margin: 0;
+      }
+    </style>
+    <div id="root">
       <p style="padding-top: 1rem; text-align: center;">Loading...</p>
-    </section>
+    </div>
     <script src="bundle.js"></script>
   </body>
 </html>

@@ -4,7 +4,7 @@
   "description": "Share your streaming schedule to the world!",
   "main": "start.js",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run server\" \"npm run watch\" --names \"💻,📦\" --prefix name",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run watch\" --names \"📦,💻\" --prefix name",
     "server": "nodemon ./start.js --ignore client/",
     "watch": "webpack --progress --watch"
   },
@@ -26,12 +26,16 @@
     "es6-promisify": "^5.0.0",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
+    "material-ui": "^0.18.1",
     "mongoose": "^4.10.4",
     "passport": "^0.3.2",
     "passport-oauth": "^1.0.0",
     "path": "^0.12.7",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
     "request": "^2.81.0",
     "validator": "^7.0.0"
   },
