@@ -38,7 +38,7 @@ passport.use('twitch', new OAuth2Strategy({
     callbackURL: CALLBACK_URL,
     state: true
   },
-  async function(accessToken, refreshToken, profile, done) {
+  (accessToken, refreshToken, profile, done) => {
     userController.findOrSave(profile, done);
   }
 ));
