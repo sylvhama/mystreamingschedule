@@ -4,7 +4,9 @@
   "description": "Share your streaming schedule to the world!",
   "main": "start.js",
   "scripts": {
-    "start": "nodemon ./start.js --ignore public/"
+    "start": "concurrently --kill-others \"npm run server\" \"npm run watch\" --names \"💻,📦\" --prefix name",
+    "server": "nodemon ./start.js --ignore client/",
+    "watch": "webpack --progress --watch"
   },
   "repository": {
     "type": "git",
@@ -28,10 +30,20 @@
     "passport": "^0.3.2",
     "passport-oauth": "^1.0.0",
     "path": "^0.12.7",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "request": "^2.81.0",
     "validator": "^7.0.0"
   },
   "devDependencies": {
-    "nodemon": "1.11.0"
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.4.0",
+    "css-loader": "^0.28.4",
+    "nodemon": "1.11.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.6.1"
   }
 }

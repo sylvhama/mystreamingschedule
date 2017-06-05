@@ -1,5 +1,6 @@
 const express  = require('express'),
       passport = require('passport'),
+      path     = require('path'),
       programController = require('../controllers/programController'),
       scheduleController = require('../controllers/scheduleController'),
       userController = require('../controllers/userController'),
@@ -38,7 +39,9 @@ router.get('/auth/twitch/callback', passport.authenticate('twitch', {
 router.get('/logout', authController.logout);
 
 router.get('*', (req, res) => {
-  res.send(`It works, login: ${req.isAuthenticated()}`);
+  console.log(req.isAuthenticated());
+  //res.send(`It works, login: ${req.isAuthenticated()}`);
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
 module.exports = router;

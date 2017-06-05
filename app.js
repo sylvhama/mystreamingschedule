@@ -2,6 +2,7 @@ const express        = require('express'),
       session        = require('express-session'),
       mongoose       = require('mongoose'),
       MongoStore     = require('connect-mongo')(session),
+      path           = require('path'),
       bodyParser     = require('body-parser'),
       cookieParser   = require('cookie-parser'),
       passport       = require('passport'),
@@ -10,6 +11,9 @@ const express        = require('express'),
 
 // create our Express app
 const app = express();
+
+// serves up static files from the public folder.
+app.use(express.static(path.join(__dirname, 'client/public')));
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
