@@ -1,6 +1,6 @@
-main {
-  margin: 0 auto;
-  max-width: 1024px;
+h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .paper {
