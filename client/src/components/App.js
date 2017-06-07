@@ -75,7 +75,7 @@ class App extends React.Component {
               )
             )}/>
             <Route path="/admin" exact render={() => (
-              this.state.loggedIn ? (
+              !this.state.loggedIn ? (
                 <Redirect to="/login"/>
               ) : (
                 <Admin/>
