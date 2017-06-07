@@ -19,6 +19,7 @@ router.delete('/schedule/:schedule_id', authController.isLoggedIn, scheduleContr
 router.get('/user/:user_id', authController.isLoggedIn, userController.isSameUser);
 router.put('/user/:user_id', authController.isLoggedIn, userController.update);
 
+router.get('/api/loggedStatus', authController.loggedStatus);
 router.get('/api/streamers', userController.getStreamers);
 router.get('/api/:user_id/favorites', authController.isLoggedIn, userController.isSameUser, userController.getFavorites);
 router.get('/api/:user_id/active/', userController.getActiveSchedules);
@@ -39,8 +40,8 @@ router.get('/auth/twitch/callback', passport.authenticate('twitch', {
 router.get('/logout', authController.logout);
 
 router.get('*', (req, res) => {
-  console.log(req.isAuthenticated());
-  //res.send(`It works, login: ${req.isAuthenticated()}`);
+  if(req.isAuthenticated()) res.cookie('twitch_id', req.user.twitch_id)
+  else res.cookie('twitch_id', 0)
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 

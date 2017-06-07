@@ -2,6 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Redirect,
   Switch
 } from 'react-router-dom';
 
@@ -14,6 +15,8 @@ import Login from './Login';
 import Profile from './Profile';
 import Admin from './Admin';
 import NotFound from './NotFound';
+
+import {getCookie} from '../helpers';
 
 const style = {
   main: {
@@ -33,6 +36,22 @@ const style = {
 };
 
 class App extends React.Component {
+  state = {
+    loggedIn: false,
+    twitch_id: 0
+  };
+
+  componentWillMount() {
+    let twitch_id = parseInt(getCookie('twitch_id')),
+        loggedIn = false;
+    if(!Number.isInteger(twitch_id) || twitch_id <= 0) twitch_id = 0;
+    else loggedIn = true;
+    this.setState({
+      loggedIn,
+      twitch_id
+    });
+  };
+
   render() {
     return (
       <Router>
@@ -41,13 +60,31 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact component={Streamers} />
             <Route path="/favorites" exact component={Favorites} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/profile" exact component={Profile} />
-            <Route path="/admin" exact component={Streamer} />
+            <Route path="/login" exact render={() => (
+              this.state.loggedIn ? (
+                <Redirect to="/profile"/>
+              ) : (
+                <Login/>
+              )
+            )}/>
+            <Route path="/profile" exact render={() => (
+              !this.state.loggedIn ? (
+                <Redirect to="/login"/>
+              ) : (
+                <Profile/>
+              )
+            )}/>
+            <Route path="/admin" exact render={() => (
+              this.state.loggedIn ? (
+                <Redirect to="/login"/>
+              ) : (
+                <Admin/>
+              )
+            )}/>
             <Route component={NotFound} />
           </Switch>
           <nav style={style.nav}>
-            <Nav />
+            <Nav loggedIn={this.state.loggedIn} />
           </nav>
         </main>
       </Router>

@@ -7,14 +7,17 @@ import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigati
 import People from 'material-ui/svg-icons/social/people';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import Account from 'material-ui/svg-icons/action/account-box';
+import Lock from 'material-ui/svg-icons/action/lock-outline';
 
 const peopleIcon = <People />,
       favoriteIcon = <Favorite />,
       accountIcon = <Account />,
+      lockIcon = <Lock />,
       routes = {
         "/": 0,
         "/favorites": 1,
-        "/login": 2
+        "/login": 2,
+        "/profile": 2,
       };
 
 class Nav extends React.Component {
@@ -28,12 +31,25 @@ class Nav extends React.Component {
     this.setState({selectedIndex: routes[route]});
   };
 
+  renderLogin = () => {
+    if(this.props.loggedIn) return <BottomNavigationItem
+      label="Profile"
+      icon={accountIcon}
+      onTouchTap={() => this.select('/profile')}
+    />
+    return <BottomNavigationItem
+      label="Login"
+      icon={lockIcon}
+      onTouchTap={() => this.select('/login')}
+    />
+  };
+
   componentDidMount() {
     this.setState({selectedIndex: routes[location.pathname]});
     this.props.history.listen((location, action) => {
       this.setState({selectedIndex: routes[location.pathname]});
     })
-  }
+  };
 
   render() {
     return (
@@ -49,11 +65,7 @@ class Nav extends React.Component {
             icon={favoriteIcon}
             onTouchTap={() => this.select('/favorites')}
           />
-          <BottomNavigationItem
-            label="Login"
-            icon={accountIcon}
-            onTouchTap={() => this.select('/login')}
-          />
+          { this.renderLogin() }
         </BottomNavigation>
       </Paper>
     );
@@ -61,7 +73,8 @@ class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  loggedIn: PropTypes.bool.isRequired
 }
 
 export default withRouter(Nav);

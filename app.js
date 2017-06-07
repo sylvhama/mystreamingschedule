@@ -13,11 +13,14 @@ const express        = require('express'),
 const app = express();
 
 // serves up static files from the public folder.
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, 'client/public'), {index: false}));
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// populates req.cookies with any cookies that came along with the request
+app.use(cookieParser());
 
 // Sessions allow us to store data on visitors from request to request
 // This keeps users logged in and allows us to send flash messages

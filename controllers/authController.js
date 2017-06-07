@@ -1,6 +1,5 @@
 exports.logout = (req, res) => {
   req.logout();
-  res.clearCookie('connect.sid');
   res.redirect('/login');
 };
 
@@ -9,6 +8,13 @@ exports.isLoggedIn = (req, res, next) => {
     next(); 
     return;
   }
-  res.clearCookie('connect.sid');
-  res.redirect('/login');
+  this.loggedStatus(req, res, next);
+};
+
+exports.loggedStatus = (req, res, next) => {
+  res.json(
+    {
+      logged: req.isAuthenticated()
+    }
+  );
 };
