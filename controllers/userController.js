@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const request = require('request');
+const mongoose   = require('mongoose'),
+      request    = require('request'),
+      helpers = require('../handlers/helpers');
 
 const User = mongoose.model('User');
 
@@ -58,7 +59,7 @@ exports.update = async function(req, res, next){
         twitch_id: req.params.twitch_id 
       },
       {
-        description: req.body.description,
+        description: helpers.escapeHtml(req.body.description).substring(0, 140),
         streamer: req.body.streamer
       }
     );
