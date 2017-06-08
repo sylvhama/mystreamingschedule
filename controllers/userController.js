@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const request = require('request');
 
 const User = mongoose.model('User');
 
@@ -20,9 +21,27 @@ exports.findOrSave = async function(profile, done) {
   }
 };
 
-exports.update = async function(){}
-
-exports.isSameUser = async function(){}
+exports.get = async function(req, res, next){
+  try {
+    const user = await User.findOne({ twitch_id: req.params.twitch_id });
+    if (!user) return res.json(
+      {
+        error: 'User not found.'
+      }
+    );
+    res.json(
+      {
+        twitch_id: user.twitch_id,
+        name: user.name,
+        description: user.description || '',
+        streamer: user.streamer,
+        logo: user.logo || ''
+      }
+    );
+  }catch(err) {
+    return next(err);
+  }
+}
 
 exports.getStreamers = async function(){}
 
@@ -31,3 +50,54 @@ exports.getFavorites = async function(){}
 exports.getActiveSchedules = async function(){}
 
 exports.getAllSchedules = async function(){}
+
+exports.update = async function(req, res, next){
+  try {
+    const response = await User.update(
+      { 
+        twitch_id: req.params.twitch_id 
+      },
+      {
+        description: req.body.description,
+        streamer: req.body.streamer
+      }
+    );
+    if(response.n>0) res.json({ok: true});
+    else res.json({error: 'An error has occured while updating your profile.'}); 
+  }catch(err) {
+    return next(err);
+  }
+}
+
+exports.updateLogo = function(req, res, next) {
+  const TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID,
+        options = {
+          url: `https://api.twitch.tv/kraken/users/${req.user.twitch_id}`,
+          method: 'GET',
+          headers: {
+            'Client-ID': TWITCH_CLIENT_ID,
+            'Accept': 'application/vnd.twitchtv.v5+json'
+          }
+        };
+
+  request(options, async function(error, response, body) {
+    const user = JSON.parse(body);
+    if (response && response.statusCode == 200 && user.logo !== null) {
+      try {
+        const responseUpdate = await User.update(
+          { 
+            twitch_id: req.params.twitch_id 
+          },
+          {
+            logo: user.logo
+          }
+        );       
+        if(responseUpdate.n>0 && responseUpdate.nModified>0) res.json({logo: user.logo});
+        if(responseUpdate.n>0 && responseUpdate.nModified===0) res.json({uptodate: 'Your logo is still up to date.'});
+        else res.json({error: 'An error has occured while updating your logo.'}); 
+      }catch(err) {
+        return next(err);
+      }
+    }else res.json({error: 'Error while updating logo.'});
+  });
+}

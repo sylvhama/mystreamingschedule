@@ -8,13 +8,21 @@ exports.isLoggedIn = (req, res, next) => {
     next(); 
     return;
   }
-  this.loggedStatus(req, res, next);
-};
-
-exports.loggedStatus = (req, res, next) => {
   res.json(
     {
-      logged: req.isAuthenticated()
+      error: 'You\'re not logged in.'
     }
   );
 };
+
+exports.isSameUser = async function(req, res, next){
+  if(req.user.twitch_id === req.params.twitch_id ) {
+    next(); 
+    return;
+  }
+  res.json(
+    {
+      error: 'You\'re not authorized to access this content.'
+    }
+  );
+}

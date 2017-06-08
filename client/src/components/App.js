@@ -5,6 +5,7 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom';
+import Snackbar from 'material-ui/Snackbar';
 
 import Header from './shared/Header';
 import Nav from './shared/Nav';
@@ -28,7 +29,7 @@ const style = {
   },
   nav: {
     position: 'fixed',
-    zIndex: 9999,
+    zIndex: 999,
     bottom: 0,
     width: '100%',
     maxWidth: '768px'
@@ -37,6 +38,8 @@ const style = {
 
 class App extends React.Component {
   state = {
+    msg: '',
+    showMsg: false,
     loggedIn: false,
     twitch_id: 0
   };
@@ -49,6 +52,21 @@ class App extends React.Component {
     this.setState({
       loggedIn,
       twitch_id
+    });
+  };
+
+  displayMsg = (msg, isError = false, errObj = {}) => {
+    if(typeof msg !== 'string') return;
+    this.setState({
+      msg: msg,
+      showMsg: true
+    });
+    if(isError) console.error(errObj);
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      showMsg: false
     });
   };
 
@@ -71,7 +89,9 @@ class App extends React.Component {
               !this.state.loggedIn ? (
                 <Redirect to="/login"/>
               ) : (
-                <Profile/>
+                <Profile displayMsg={this.displayMsg}
+                         twitch_id={this.state.twitch_id}
+                />
               )
             )}/>
             <Route path="/admin" exact render={() => (
@@ -86,6 +106,12 @@ class App extends React.Component {
           <nav style={style.nav}>
             <Nav loggedIn={this.state.loggedIn} />
           </nav>
+          <Snackbar
+            open={this.state.showMsg}
+            message={this.state.msg}
+            autoHideDuration={4000}
+            onRequestClose={this.handleRequestClose}
+          />
         </main>
       </Router>
     )

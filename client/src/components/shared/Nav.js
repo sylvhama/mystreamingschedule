@@ -26,12 +26,12 @@ class Nav extends React.Component {
     selectedIndex: -1
   }; 
 
-  select = (route) => {
+  select(route) {
     this.props.history.push(route);
     this.setState({selectedIndex: routes[route]});
   };
 
-  renderLogin = () => {
+  renderLogin() {
     if(this.props.loggedIn) return <BottomNavigationItem
       label="Profile"
       icon={accountIcon}

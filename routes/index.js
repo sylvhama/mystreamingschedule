@@ -16,14 +16,14 @@ router.post('/schedule', authController.isLoggedIn, scheduleController.add);
 router.put('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.isAuthor, scheduleController.update);
 router.delete('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.isAuthor, scheduleController.delete);
 
-router.get('/user/:user_id', authController.isLoggedIn, userController.isSameUser);
-router.put('/user/:user_id', authController.isLoggedIn, userController.update);
+router.get('/user/:twitch_id', userController.get);
+router.get('/logo/:twitch_id', authController.isLoggedIn, authController.isSameUser, userController.updateLogo);
+router.put('/user/:twitch_id', authController.isLoggedIn, authController.isSameUser, userController.update);
 
-router.get('/api/loggedStatus', authController.loggedStatus);
 router.get('/api/streamers', userController.getStreamers);
-router.get('/api/:user_id/favorites', authController.isLoggedIn, userController.isSameUser, userController.getFavorites);
-router.get('/api/:user_id/active/', userController.getActiveSchedules);
-router.get('/api/:user_id/all/', authController.isLoggedIn, userController.isSameUser, userController.getAllSchedules);
+router.get('/api/:twitch_id/favorites', authController.isLoggedIn, authController.isSameUser, userController.getFavorites);
+router.get('/api/:twitch_id/active/', userController.getActiveSchedules);
+router.get('/api/:twitch_id/all/', authController.isLoggedIn, authController.isSameUser, userController.getAllSchedules);
 
 // Set route to start OAuth link
 // this is where you define scopes to request
