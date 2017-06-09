@@ -14,7 +14,7 @@ import Streamer from './Streamer';
 import Favorites from './Favorites';
 import Login from './Login';
 import Profile from './Profile';
-import Admin from './Admin';
+import Editor from './Editor';
 import NotFound from './NotFound';
 
 import {getCookie} from '../helpers';
@@ -94,11 +94,11 @@ class App extends React.Component {
                 />
               )
             )}/>
-            <Route path="/admin" exact render={() => (
+            <Route path="/editor" exact render={() => (
               !this.state.loggedIn ? (
                 <Redirect to="/login"/>
               ) : (
-                <Admin/>
+                <Editor/>
               )
             )}/>
             <Route component={NotFound} />

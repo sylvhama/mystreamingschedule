@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
 import Badge from 'material-ui/Badge';
@@ -90,6 +91,11 @@ class Profile extends React.Component {
     );
   };
 
+  renderEditorLink() {
+    if(this.state.loading || !this.state.streamer) return(<span />);
+    return(<Link to="/editor" />);
+  }
+
   submit(e) {
     e.preventDefault();
     const checked = this.state.checked;
@@ -153,6 +159,17 @@ class Profile extends React.Component {
                         disabled={this.state.loading}
           />
         </form>
+        <Divider style={{marginTop: '16px'}} />
+        <p style={{marginTop: '16px'}}
+           hidden={this.state.streamer}>
+            See above if you want to turn on the editor.
+        </p>
+        <RaisedButton containerElement={this.renderEditorLink()}
+                      style={{marginTop: '16px'}}
+                      label="Access Schedule Editor"
+                      fullWidth={true}
+                      disabled={this.state.loading || !this.state.streamer}
+        />
         <Divider style={{marginTop: '16px'}} />
         <FlatButton style={{marginTop: '16px'}}
                     label="Logout"
