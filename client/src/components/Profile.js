@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {labelWithCounter, fetchOptions} from '../helpers';
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
 import Badge from 'material-ui/Badge';
@@ -65,12 +66,6 @@ class Profile extends React.Component {
     .catch((err) => this.props.displayMsg('An error has occured.', true, err));
   };
 
-  descriptionLabel() {
-    const count = this.state.description.length,
-          max = 140;
-    return `Description ${count}/${max}`;
-  }
-
   renderLogo() {
     let avatar = <Avatar src={this.state.logo} />;
     if(this.state.logo === '') avatar = <Avatar backgroundColor={deepPurple500} icon={<Face />} />;
@@ -106,11 +101,7 @@ class Profile extends React.Component {
         description: this.state.description,
         streamer: checked
       }),
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }  
+      ...fetchOptions
     })
     .then((res) => res.json())
     .then((json) => {
@@ -134,9 +125,8 @@ class Profile extends React.Component {
         {this.renderLogo()}
         <form id="profile-form" onSubmit={(e) => this.submit(e)}>
           <TextField
-            name="description"
             hintText="Write your description here"
-            floatingLabelText={this.descriptionLabel()}
+            floatingLabelText={labelWithCounter(this.state.description.length, 140, 'Channel description')}
             floatingLabelFixed={true}
             multiLine={true}
             rowsMax={5}
@@ -146,7 +136,6 @@ class Profile extends React.Component {
           />
           <br /><br />
           <Checkbox
-            name="streamer"
             checked={this.state.checked} 
             label="I want to appear in search results and create my own streaming schedule."
             onCheck={this.onCheck}

@@ -98,7 +98,7 @@ class App extends React.Component {
               !this.state.loggedIn ? (
                 <Redirect to="/login"/>
               ) : (
-                <Editor/>
+                <Editor displayMsg={this.displayMsg}/>
               )
             )}/>
             <Route component={NotFound} />

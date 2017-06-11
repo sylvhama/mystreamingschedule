@@ -6,3 +6,11 @@ h2, h3, h4, h5, h6 {
 .paper {
   padding: 1rem;
 }
+
+.material-picker-container div {
+  box-shadow: none !important
+}
+
+.material-picker {
+  padding: 0 !important;
+}

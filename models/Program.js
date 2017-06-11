@@ -13,16 +13,16 @@ const programSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  title: {
+  name: {
     type: String,
     trim: true,
-    maxLength: [50, 'Title should be max 50 characters'],
-    required: 'Please supply a title'
+    maxLength: [20, 'Name should be max 20 characters'],
+    required: 'Please supply a name'
   },
   description: {
     type: String,
     trim: true,
-    maxLength: [50, 'Description should be max 50 characters'],
+    maxLength: [20, 'Description should be max 20 characters'],
   },
   color: {
     type: String,
