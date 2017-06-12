@@ -32,6 +32,10 @@ const programSchema = new mongoose.Schema({
       msg: 'Invalid Hex Color'
     }],
     required: 'Please supply a hex color'
+  },
+  blackText: {
+    type: Boolean,
+    default: false
   }
 });
 

@@ -107,11 +107,11 @@ class Profile extends React.Component {
     .then((json) => {
       if(json.error) this.props.displayMsg(json.error, true, json);
       else {
-        this.props.displayMsg('Your profile has been updated.');
         this.setState({
           loading: false,
           streamer: checked
         })
+        this.props.displayMsg('Your profile has been updated.');
       }
     })
     .catch((err) => this.props.displayMsg('An error has occured', true, err));

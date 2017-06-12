@@ -8,13 +8,15 @@ const express  = require('express'),
 
 const router = express.Router();
 
+router.get('/programs', authController.isLoggedIn, programController.get);
 router.post('/program', authController.isLoggedIn, programController.add);
-router.put('/program/:program_id', authController.isLoggedIn, programController.isAuthor, programController.update);
-router.delete('/program/:program_id', authController.isLoggedIn, programController.isAuthor, programController.delete);
+router.put('/program', authController.isLoggedIn, programController.update);
+router.delete('/program/:program_id', authController.isLoggedIn, programController.remove);
 
+router.get('/schedules', authController.isLoggedIn, scheduleController.get);
 router.post('/schedule', authController.isLoggedIn, scheduleController.add);
-router.put('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.isAuthor, scheduleController.update);
-router.delete('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.isAuthor, scheduleController.delete);
+router.put('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.update);
+router.delete('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.remove);
 
 router.get('/user/:twitch_id', userController.get);
 router.get('/logo/:twitch_id', authController.isLoggedIn, authController.isSameUser, userController.updateLogo);
@@ -22,8 +24,7 @@ router.put('/user/:twitch_id', authController.isLoggedIn, authController.isSameU
 
 router.get('/api/streamers', userController.getStreamers);
 router.get('/api/:twitch_id/favorites', authController.isLoggedIn, authController.isSameUser, userController.getFavorites);
-router.get('/api/:twitch_id/active/', userController.getActiveSchedules);
-router.get('/api/:twitch_id/all/', authController.isLoggedIn, authController.isSameUser, userController.getAllSchedules);
+router.get('/api/:twitch_id/active', userController.getActiveSchedules);
 
 // Set route to start OAuth link
 // this is where you define scopes to request

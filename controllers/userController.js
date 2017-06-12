@@ -51,8 +51,6 @@ exports.getFavorites = async function(){}
 
 exports.getActiveSchedules = async function(){}
 
-exports.getAllSchedules = async function(){}
-
 exports.update = async function(req, res, next){
   try {
     const response = await User.update(
@@ -64,7 +62,7 @@ exports.update = async function(req, res, next){
         streamer: req.body.streamer
       }
     );
-    if(response.n>0) res.json({ok: true});
+    if(response.n>0 && response.nModified>0) res.json({ok: true});
     else res.json({error: 'An error has occured while updating your profile.'}); 
   }catch(err) {
     return next(err);
