@@ -14,7 +14,6 @@ class Program extends React.Component {
     name: '',
     description: '',
     blackText: false,
-    loading: true,
     programs: [],
     editMode: false
   }
@@ -36,7 +35,7 @@ class Program extends React.Component {
 
   onSubmitProgram = (e) => {
     e.preventDefault();
-    this.setLoading(true);
+    this.props.setLoading(true);
     const program = {
       _id: this.state._id,
       name: this.state.name,
@@ -64,21 +63,15 @@ class Program extends React.Component {
         this.props.displayMsg(successMsg);
         if(!this.state.editMode) this.addProgram(json.program);
         else this.updateProgram(program);
-        this.setLoading(false);
+        this.props.setLoading(false);
         this.uneditProgram();
       }
     })
     .catch((err) => this.props.displayMsg('An error has occured', true, err));
   };
 
-  setLoading = (loading) => {
-    this.setState({
-      loading
-    });
-  }
-
   editProgram = (program) => {
-    if(this.state.loading) return;
+    if(this.props.loading) return;
     this.setState(
     {
       editMode: true,
@@ -91,7 +84,7 @@ class Program extends React.Component {
   }
 
   uneditProgram = () => {
-    if(this.state.loading) return;
+    if(this.props.loading) return;
     this.setState(
     {
       editMode: false,
@@ -121,7 +114,7 @@ class Program extends React.Component {
   }
 
   removeProgram = (programToRm) => {
-    this.setLoading(true);
+    this.props.setLoading(true);
     fetch(`program/${programToRm._id}`, {
       credentials: 'include',
       method: 'delete',
@@ -136,7 +129,7 @@ class Program extends React.Component {
       this.setState({
         programs: newPrograms
       });
-      this.setLoading(false);
+      this.props.setLoading(false);
       this.uneditProgram();
     })
     .catch((err) => this.props.displayMsg('An error has occured.', true, err));
@@ -150,7 +143,7 @@ class Program extends React.Component {
     .then((programs) => {
       if(programs.error) return this.props.displayMsg(programs.error, true, programs.error);
       this.setState({programs});
-      this.setLoading(false);
+      this.props.setLoading(false);
     })
     .catch((err) => this.props.displayMsg('An error has occured.', true, err));
   }
@@ -158,12 +151,12 @@ class Program extends React.Component {
   render() {
     return(
       <div>
-        <ProgramList loading={this.state.loading} 
+        <ProgramList loading={this.props.loading} 
                      programs={this.state.programs}
                      editProgram={this.editProgram}  
                      removeProgram={this.removeProgram} /> 
         <br />
-        <ProgramForm loading={this.state.loading} 
+        <ProgramForm loading={this.props.loading} 
                      name={this.state.name}
                      description={this.state.description}
                      color={this.state.color}
@@ -180,7 +173,9 @@ class Program extends React.Component {
 }
 
 Program.propTypes = {
-  displayMsg: PropTypes.func.isRequired
+  loading: PropTypes.bool.isRequired,
+  displayMsg: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired
 }
 
 export default Program;

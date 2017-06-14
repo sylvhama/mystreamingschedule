@@ -107,6 +107,7 @@ class Profile extends React.Component {
     .then((json) => {
       if(json.error) this.props.displayMsg(json.error, true, json);
       else {
+        this.props.setStreamer(checked);
         this.setState({
           loading: false,
           streamer: checked
@@ -181,6 +182,7 @@ class Profile extends React.Component {
 
 Profile.propTypes = {
   twitch_id: PropTypes.number.isRequired,
+  setStreamer: PropTypes.func.isRequired,
   displayMsg: PropTypes.func.isRequired
 }
 

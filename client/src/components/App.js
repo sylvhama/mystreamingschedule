@@ -41,16 +41,20 @@ class App extends React.Component {
     msg: '',
     showMsg: false,
     loggedIn: false,
+    streamer: false,
     twitch_id: 0
   };
 
   componentWillMount() {
-    let twitch_id = parseInt(getCookie('twitch_id')),
+    const user = JSON.parse(decodeURIComponent(getCookie('user')));
+    let twitch_id = parseInt(user.twitch_id),
+        streamer = user.streamer || false,
         loggedIn = false;
     if(!Number.isInteger(twitch_id) || twitch_id <= 0) twitch_id = 0;
     else loggedIn = true;
     this.setState({
       loggedIn,
+      streamer,
       twitch_id
     });
   };
@@ -69,6 +73,8 @@ class App extends React.Component {
       showMsg: false
     });
   };
+
+  setStreamer = (streamer) => this.setState({streamer});
 
   render() {
     return (
@@ -91,6 +97,7 @@ class App extends React.Component {
               ) : (
                 <Profile displayMsg={this.displayMsg}
                          twitch_id={this.state.twitch_id}
+                         setStreamer={this.setStreamer}
                 />
               )
             )}/>
@@ -98,8 +105,11 @@ class App extends React.Component {
               !this.state.loggedIn ? (
                 <Redirect to="/login"/>
               ) : (
+              !this.state.streamer ? (
+                <Redirect to="/profile"/>
+              ) : (
                 <Editor displayMsg={this.displayMsg}/>
-              )
+              ))
             )}/>
             <Route component={NotFound} />
           </Switch>

@@ -17,6 +17,7 @@ exports.findOrSave = async function(profile, done) {
     let found = await User.findOne(user);
     if(!found) found = await userModel.save();
     user._id = found._id;
+    user.streamer = found.streamer;
     done(null, user);
   }catch(err) {
     done(err, user);
@@ -62,7 +63,10 @@ exports.update = async function(req, res, next){
         streamer: req.body.streamer
       }
     );
-    if(response.n>0 && response.nModified>0) res.json({ok: true});
+    if(response.n>0 && response.nModified>0) {
+      req.user.streamer = req.body.streamer;
+      res.json({ok: true});
+    }
     else res.json({error: 'An error has occured while updating your profile.'}); 
   }catch(err) {
     return next(err);

@@ -41,8 +41,11 @@ router.get('/auth/twitch/callback', passport.authenticate('twitch', {
 router.get('/logout', authController.logout);
 
 router.get('*', (req, res) => {
-  if(req.isAuthenticated()) res.cookie('twitch_id', req.user.twitch_id)
-  else res.cookie('twitch_id', 0)
+  if(req.isAuthenticated()) res.cookie('user', JSON.stringify({
+    twitch_id: req.user.twitch_id,
+    streamer: req.user.streamer
+  }))
+  else res.cookie('user', 0)
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
