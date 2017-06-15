@@ -23,10 +23,6 @@ const scheduleSchema = new mongoose.Schema({
   days: {
     type: [Number],
     required: 'Please supply days'
-  },
-  active: {
-    type: Boolean,
-    default: true
   }
 });
 

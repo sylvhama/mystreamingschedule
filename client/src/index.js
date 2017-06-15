@@ -14,6 +14,10 @@ injectTapEventPlugin();
 const muiTheme = getMuiTheme({
   palette: {
     primary1Color: deepPurple500,
+    pickerHeaderColor: deepPurple500
+  },
+  menuItem: {
+    selectedTextColor: deepPurple500,
   },
   appBar: {
     height: 56
