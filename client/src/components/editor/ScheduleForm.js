@@ -33,7 +33,7 @@ class ScheduleForm extends React.Component {
       <form onSubmit={this.onSubmit}>
         <Card>
           <CardHeader
-            title="New Schedule"
+            title={`New Schedule for ${this.props.name}`}
           />
           <CardText style={{paddingTop:'0'}}>
             <SelectField
@@ -78,7 +78,8 @@ class ScheduleForm extends React.Component {
 }
 
 ScheduleForm.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export default ScheduleForm;

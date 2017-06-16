@@ -179,6 +179,7 @@ class Program extends React.Component {
         <div style={style.common}
              hidden={!this.state.editMode}>
           <ScheduleForm loading={this.state.loading}
+                        name={this.state.name}
           /> 
         </div>
         <div>

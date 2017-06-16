@@ -44,7 +44,7 @@ class ProgramList extends React.Component {
       <Card>
         <CardHeader
           title="Program List"
-          subtitle="Click to edit it or add schedules"
+          subtitle="Click to edit a program or to add schedules"
         />
         <CardText style={{paddingTop:'0'}}>
           {this.renderList()}
