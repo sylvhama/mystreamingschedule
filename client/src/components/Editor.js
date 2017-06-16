@@ -180,6 +180,7 @@ class Program extends React.Component {
              hidden={!this.state.editMode}>
           <ScheduleForm loading={this.state.loading}
                         name={this.state.name}
+                        uneditProgram={this.uneditProgram}
           /> 
         </div>
         <div>

@@ -69,7 +69,11 @@ class ScheduleForm extends React.Component {
               disabled={this.props.loading}
               type="submit"
               primary={true}
-              label="Add Schedule" />            
+              label="Add Schedule" />  
+            <FlatButton 
+              onTouchTap={() => this.props.uneditProgram()}
+              disabled={this.props.loading}
+              label="Cancel" />          
           </CardActions>
         </Card>
       </form>
@@ -79,7 +83,8 @@ class ScheduleForm extends React.Component {
 
 ScheduleForm.propTypes = {
   loading: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  uneditProgram: PropTypes.func.isRequired
 }
 
 export default ScheduleForm;
