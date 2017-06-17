@@ -4,10 +4,9 @@ import { MaterialPicker } from 'react-color';
 import {labelWithCounter, fetchOptions} from '../../helpers';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import Toggle from 'material-ui/Toggle';
 import TextField from 'material-ui/TextField';
 
-const limit = 20,
+const limit = 50,
       style = {
         label: {
           paddingBottom: '8px',
@@ -66,19 +65,12 @@ class Program extends React.Component {
             />
             <div style={{marginTop: '16px'}} 
                  className="material-picker-container">
-              <label style={style.label}>Program background color</label>
+              <label style={style.label}>Program chip color</label>
               <MaterialPicker color={this.props.color}
                               className="material-picker"
                               onChangeComplete={this.props.colorChange}
               />
             </div>
-            <Toggle
-              style={{marginTop:'16px'}}
-              label="Black text (default is white)"
-              labelPosition="right"
-              toggled={this.props.blackText}
-              onToggle={this.props.onToggle}
-            />
           </CardText>
           <CardActions>
             <FlatButton 
@@ -98,14 +90,12 @@ Program.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  blackText: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
   editMode: PropTypes.bool.isRequired,
   uneditProgram: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  colorChange: PropTypes.func.isRequired,
-  onToggle: PropTypes.func.isRequired
+  colorChange: PropTypes.func.isRequired
 }
 
 export default Program;

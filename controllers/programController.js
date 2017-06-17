@@ -17,10 +17,9 @@ exports.get = async function(req, res, next){
 exports.add = async function(req, res, next){
   const newProgram = new Program({
     author: req.user._id,
-    name: req.body.name,
-    description: req.body.description,
-    color: req.body.color,
-    blackText: req.body.blackText
+    name: helpers.escapeHtml(req.body.name).substring(0, 50),
+    description: helpers.escapeHtml(req.body.description).substring(0, 50),
+    color: req.body.color
   });
   try {
     const program = await newProgram.save();
@@ -35,10 +34,9 @@ exports.update = async function(req, res, next){
   try {
     const program = {
       _id: req.body._id,
-      name: req.body.name,
-      description: req.body.description,
-      color: req.body.color,
-      blackText: req.body.blackText
+      name: helpers.escapeHtml(req.body.name).substring(0, 50),
+      description: helpers.escapeHtml(req.body.description).substring(0, 50),
+      color: req.body.color
     }
     const response = await Program.update(
       { 
@@ -48,8 +46,7 @@ exports.update = async function(req, res, next){
       {
         name: program.name,
         description: program.description,
-        color: program.color,
-        blackText: program.blackText
+        color: program.color
       }
     );
     if(response.n>0) res.json(program);

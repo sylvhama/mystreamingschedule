@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
 import Chip from 'material-ui/Chip';
+import Avatar from 'material-ui/Avatar';
 
 const style = {
   chip: {
@@ -21,16 +22,13 @@ class ProgramList extends React.Component {
     return (
       <div style={style.wrapper}>
         {programs.map((program, i) => {
-          let labelColor = 'black';
-          if(!program.blackText) labelColor = 'white';
           return(
             <Chip style={style.chip} 
-                  labelColor={labelColor}
                   key={`program-${program._id}`}
-                  backgroundColor={program.color}
                   disabled={this.props.loading}
                   onRequestDelete={() => this.props.removeProgram(program)}
                   onTouchTap={() => this.props.editProgram(program)}>
+              <Avatar backgroundColor={program.color} />
               {program.name}         
             </Chip>
           )

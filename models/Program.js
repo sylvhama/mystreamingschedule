@@ -16,13 +16,13 @@ const programSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    maxLength: [20, 'Name should be max 20 characters'],
+    maxLength: [50, 'Name should be max 50 characters'],
     required: 'Please supply a name'
   },
   description: {
     type: String,
     trim: true,
-    maxLength: [20, 'Description should be max 20 characters'],
+    maxLength: [50, 'Description should be max 50 characters'],
   },
   color: {
     type: String,
@@ -32,10 +32,6 @@ const programSchema = new mongoose.Schema({
       msg: 'Invalid Hex Color'
     }],
     required: 'Please supply a hex color'
-  },
-  blackText: {
-    type: Boolean,
-    default: false
   }
 });
 

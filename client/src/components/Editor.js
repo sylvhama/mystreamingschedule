@@ -7,7 +7,7 @@ import ScheduleList from './editor/ScheduleList';
 import {fetchOptions} from '../helpers';
 import Paper from 'material-ui/Paper';
 
-const initColor = '#3F51B5',
+const initColor = '#FFFFFF',
       style = {
         common: {
           marginBottom: '16px'
@@ -23,7 +23,6 @@ class Program extends React.Component {
     name: '',
     description: '',
     programs: [],
-    blackText: false,
     editMode: false
   }
 
@@ -46,8 +45,6 @@ class Program extends React.Component {
     });
   };
 
-  onToggleTextColor = (event, isInputChecked) => this.setState({blackText: isInputChecked});
-
   onSubmitProgram = (e) => {
     e.preventDefault();
     this.setLoading(true);
@@ -55,8 +52,7 @@ class Program extends React.Component {
       _id: this.state._id,
       name: this.state.name,
       description: this.state.description,
-      color: this.state.color,
-      blackText: this.state.blackText
+      color: this.state.color
     };
     let method = 'POST';
     let successMsg = `Your program ${program.name} has been added.`;
@@ -93,8 +89,7 @@ class Program extends React.Component {
       _id: program._id,
       name: program.name,
       description: program.description,
-      color: program.color,
-      blackText: program.blackText
+      color: program.color
     });
   }
 
@@ -106,8 +101,7 @@ class Program extends React.Component {
       _id: '',
       name: '',
       description: '',
-      color: initColor,
-      blackText: false
+      color: initColor
     });
   }
 
@@ -212,12 +206,10 @@ class Program extends React.Component {
                        name={this.state.name}
                        description={this.state.description}
                        color={this.state.color}
-                       blackText={this.state.blackText}
                        editMode={this.state.editMode}  
                        onSubmit={this.onSubmitProgram}
                        onChange={this.onChange}
                        colorChange={this.colorChange}
-                       onToggle={this.onToggleTextColor}
                        uneditProgram={this.uneditProgram}
           />  
         </div>            
