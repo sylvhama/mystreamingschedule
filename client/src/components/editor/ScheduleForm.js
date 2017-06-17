@@ -34,11 +34,15 @@ class ScheduleForm extends React.Component {
     if(!this.state.days.length || !Number.isInteger(this.state.startMin) || !Number.isInteger(this.state.startHour) || !Number.isInteger(this.state.endMin) || !Number.isInteger(this.state.endHour)) return;
     const hourDiff = this.state.endHour - this.state.startHour,
           minDiff = this.state.endMin - this.state.startMin;
-    let timeOk = true;
+    let timeOk = true,
+        msg = 'Starting time can not be higher than ending time.';
     if(hourDiff < 0) timeOk = false;
-    else if(hourDiff === 0 && minDiff < 30) timeOk = false;
+    else if(hourDiff === 0 && minDiff < 30) {
+      timeOk = false;
+      msg = 'Minimum duration is 30 minutes.'
+    }
     if(this.state.endHour === 0 && this.state.endMin === 0 && Math.abs(minDiff) <= 30) timeOk = true;
-    if(!timeOk) return this.props.displayMsg('Starting date can not be higher than ending time.');
+    if(!timeOk) return this.props.displayMsg(msg);
     const schedule = {...this.state};
     this.props.addSchedule(schedule);
   }
