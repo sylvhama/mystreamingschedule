@@ -1,22 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ScheduleForm from './ScheduleForm';
-import ScheduleList from './ScheduleList';
-import {fetchOptions} from '../../helpers';
+import Schedule from '../shared/Schedule';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 
-class Schedule extends React.Component {
+class ScheduleList extends React.Component {
 
   render() {
-    return(
-      <div>
-        
-      </div>
-    );
-  }
+    return (
+      <Card>
+        <CardHeader
+          title="Your Schedule"
+        />
+        <CardText style={{paddingTop:'0'}}>
+          <Schedule loading={this.props.loading}
+                    schedules={this.props.schedules}
+          />
+        </CardText>
+      </Card>
+    )
+  };
 }
 
-Schedule.propTypes = {
-  loading: PropTypes.bool.isRequired
+ScheduleList.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  schedules: PropTypes.array.isRequired,
+  editMode: PropTypes.bool,
+  removeSchedule: PropTypes.func
 }
 
-export default Schedule;
+export default ScheduleList;

@@ -4,6 +4,15 @@ const Schedule = mongoose.model('Schedule'),
       Program = mongoose.model('Program');
 
 exports.get = async function(req, res, next){
+  try {
+    const schedules = await Schedule.find({
+      author: req.user._id
+    })
+    .populate('program');
+    res.json(schedules);
+  }catch(err) {
+    return next(err);
+  }
 }
 
 exports.add = async function(req, res, next){

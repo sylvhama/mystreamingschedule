@@ -23,6 +23,7 @@ class Program extends React.Component {
     name: '',
     description: '',
     programs: [],
+    schedules: [],
     editMode: false
   }
 
@@ -166,14 +167,22 @@ class Program extends React.Component {
   };
 
   componentWillMount() {
-    fetch(`programs`, {
+    const p1 = fetch('programs', {
       credentials: 'include',
-    }) 
-    .then((res) => res.json())
-    .then((programs) => {
+    });
+    const p2 =  fetch('schedules', {
+      credentials: 'include',
+    })
+    Promise.all([p1, p2])
+    .then((res) => Promise.all([res[0].json(), res[1].json()]))
+    .then((data) => {
+      const programs = data[0],
+            schedules = data[1];
       if(programs.error) return this.props.displayMsg(programs.error, true, programs.error);
+      if(schedules.error) return this.props.displayMsg(schedules.error, true, schedules.error);
       this.setState({
         programs,
+        schedules,
         loading: false
       });
     })
@@ -184,8 +193,12 @@ class Program extends React.Component {
     return(
       <Paper zDepth={1} className="paper">
         <div style={style.common}>
-          <ProgramList style={style.common}
-                       loading={this.state.loading} 
+          <ScheduleList loading={this.state.loading}
+                        schedules={this.state.schedules}
+          />
+        </div>
+        <div style={style.common}>
+          <ProgramList loading={this.state.loading} 
                        programs={this.state.programs}
                        editProgram={this.editProgram}  
                        removeProgram={this.removeProgram}
@@ -201,8 +214,7 @@ class Program extends React.Component {
           /> 
         </div>
         <div>
-          <ProgramForm style={style.common}
-                       loading={this.state.loading} 
+          <ProgramForm loading={this.state.loading} 
                        name={this.state.name}
                        description={this.state.description}
                        color={this.state.color}
