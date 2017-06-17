@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/programs', authController.isLoggedIn, programController.get);
 router.post('/program', authController.isLoggedIn, programController.add);
 router.put('/program', authController.isLoggedIn, programController.update);
-router.delete('/program/:program_id', authController.isLoggedIn, programController.remove);
+router.delete('/program/:program_id', authController.isLoggedIn, scheduleController.removeByProgram, programController.remove);
 
 router.get('/schedules', authController.isLoggedIn, scheduleController.get);
 router.post('/schedule', authController.isLoggedIn, scheduleController.add);

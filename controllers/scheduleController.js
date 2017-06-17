@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 
-const Schedule = mongoose.model('Schedule');
+const Schedule = mongoose.model('Schedule'),
+      Program = mongoose.model('Program');
 
 exports.get = async function(req, res, next){
 }
 
 exports.add = async function(req, res, next){
   const newSchedule = new Schedule({
+    author: req.user._id,
     program: req.body.program_id,
     startHour: req.body.startHour,
     startMin: req.body.startMin,
@@ -23,4 +25,31 @@ exports.add = async function(req, res, next){
   }
 }
 
-exports.remove = async function(){}
+exports.remove = async function(req, res, next){
+  try {
+    const response = await Schedule.remove(
+      { 
+        _id: req.params.schedule_id,
+        author: req.user._id 
+      }
+    );
+    if(response.result.n>0 && response.result.ok>0) res.json({ok: true});
+    else res.json({error: 'An error has occured while removing your schedule.'}); 
+  }catch(err) {
+    return next(err);
+  }
+}
+
+exports.removeByProgram = async function(req, res, next){
+  try {
+    const response = await Schedule.remove(
+      { 
+        program: req.params.program_id,
+        author: req.user._id
+      }
+    );
+    next();
+  }catch(err) {
+    return next(err);
+  }
+}

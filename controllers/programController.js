@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'),
       helpers  = require('../handlers/helpers');
 
-const Program = mongoose.model('Program')
+const Program = mongoose.model('Program');
 
 exports.get = async function(req, res, next){
   try {

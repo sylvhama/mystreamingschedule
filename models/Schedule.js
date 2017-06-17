@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const scheduleSchema = new mongoose.Schema({
+  author: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: 'Please supply an user'
+  },
   program: {
     type: mongoose.Schema.ObjectId,
     ref: 'Program',
