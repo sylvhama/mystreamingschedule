@@ -150,6 +150,27 @@ class Program extends React.Component {
     .catch((err) => this.props.displayMsg('An error has occured.', true, err));
   }
 
+  addSchedule = (schedule) => {
+    this.setLoading(true);
+    schedule.program_id = this.state._id;
+    fetch(`/schedule/`, {
+      method: 'POST',
+      body: JSON.stringify({
+        ...schedule
+      }),
+      ...fetchOptions
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      if(json.error) this.props.displayMsg(json.error, true, json);
+      else {
+        this.props.displayMsg('Your schedule has been added.');
+        this.setLoading(false);
+      }
+    })
+    .catch((err) => this.props.displayMsg('An error has occured', true, err));
+  };
+
   componentWillMount() {
     fetch(`programs`, {
       credentials: 'include',
@@ -179,8 +200,10 @@ class Program extends React.Component {
         <div style={style.common}
              hidden={!this.state.editMode}>
           <ScheduleForm loading={this.state.loading}
+                        displayMsg={this.props.displayMsg}
                         name={this.state.name}
                         uneditProgram={this.uneditProgram}
+                        addSchedule={this.addSchedule}
           /> 
         </div>
         <div>

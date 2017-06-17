@@ -11,21 +11,36 @@ class ScheduleForm extends React.Component {
   state = {
     program_id: '',
     days: [],
-    start: 0,
-    end: 0
+    startMin: false,
+    startHour: false,
+    endMin: false,
+    endHour: false
   }
 
   selectChange = (e, key, payload) => this.setState({days: payload});
 
   timeChange = (time, key) => {
+    const d = new Date(time),
+          min = d.getMinutes(),
+          hour = d.getHours();
     this.setState({
-      [key]: time
+      [`${key}Min`]: min,
+      [`${key}Hour`]: hour
     });
   };
 
   onSubmit = (e) => {
     e.preventDefault();
-    if(!this.state.days.length || !this.state.start instanceof Date || !this.state.end instanceof Date) return;
+    if(!this.state.days.length || !Number.isInteger(this.state.startMin) || !Number.isInteger(this.state.startHour) || !Number.isInteger(this.state.endMin) || !Number.isInteger(this.state.endHour)) return;
+    const hourDiff = this.state.endHour - this.state.startHour,
+          minDiff = this.state.endMin - this.state.startMin;
+    let timeOk = true;
+    if(hourDiff < 0) timeOk = false;
+    else if(hourDiff === 0 && minDiff < 30) timeOk = false;
+    if(this.state.endHour === 0 && this.state.endMin === 0 && Math.abs(minDiff) <= 30) timeOk = true;
+    if(!timeOk) return this.props.displayMsg('Starting date can not be higher than ending time.');
+    const schedule = {...this.state};
+    this.props.addSchedule(schedule);
   }
 
   render() {
@@ -83,8 +98,10 @@ class ScheduleForm extends React.Component {
 
 ScheduleForm.propTypes = {
   loading: PropTypes.bool.isRequired,
+  displayMsg: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  uneditProgram: PropTypes.func.isRequired
+  uneditProgram: PropTypes.func.isRequired,
+  addSchedule: PropTypes.func.isRequired,
 }
 
 export default ScheduleForm;

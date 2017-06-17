@@ -12,13 +12,21 @@ const scheduleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  start: {
+  startMin: {
     type: Number,
-    required: 'Please supply a start time'
+    required: 'Please supply a start time (minute)'
   },
-  end: {
+  startHour: {
     type: Number,
-    required: 'Please supply an end time'
+    required: 'Please supply a start time (hour)'
+  },
+  endMin: {
+    type: Number,
+    required: 'Please supply an end time (minute)'
+  },
+  endHour: {
+    type: Number,
+    required: 'Please supply an end time (hour)'
   },
   days: {
     type: [Number],

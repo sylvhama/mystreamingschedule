@@ -15,7 +15,6 @@ router.delete('/program/:program_id', authController.isLoggedIn, programControll
 
 router.get('/schedules', authController.isLoggedIn, scheduleController.get);
 router.post('/schedule', authController.isLoggedIn, scheduleController.add);
-router.put('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.update);
 router.delete('/schedule/:schedule_id', authController.isLoggedIn, scheduleController.remove);
 
 router.get('/user/:twitch_id', userController.get);
@@ -24,7 +23,6 @@ router.put('/user/:twitch_id', authController.isLoggedIn, authController.isSameU
 
 router.get('/api/streamers', userController.getStreamers);
 router.get('/api/:twitch_id/favorites', authController.isLoggedIn, authController.isSameUser, userController.getFavorites);
-router.get('/api/:twitch_id/active', userController.getActiveSchedules);
 
 // Set route to start OAuth link
 // this is where you define scopes to request

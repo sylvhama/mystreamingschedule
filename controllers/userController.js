@@ -50,8 +50,6 @@ exports.getStreamers = async function(){}
 
 exports.getFavorites = async function(){}
 
-exports.getActiveSchedules = async function(){}
-
 exports.update = async function(req, res, next){
   try {
     const response = await User.update(
