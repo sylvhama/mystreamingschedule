@@ -21,20 +21,20 @@ class Profile extends React.Component {
     twitch_id: 0,
     checked: false,
     loading: false
-  };
+  }
 
   onChangeDescription = (e, newValue) => {
     if(newValue.length > 140) return;
     this.setState({
       description: newValue
     });
-  };
+  }
 
   onCheck = (e, isChecked) => {
     this.setState({
       checked: isChecked
     });
-  };
+  }
 
   updateLogo = () => {
     this.setState({loading: true});
@@ -53,7 +53,7 @@ class Profile extends React.Component {
       })
     })
     .catch((err) => this.props.displayMsg('An error has occured', true, err));
-  };
+  }
 
   componentDidMount() {
     fetch(`user/${this.props.twitch_id}`) 
@@ -64,7 +64,7 @@ class Profile extends React.Component {
       if(user.streamer) this.setState({checked:true});
     })
     .catch((err) => this.props.displayMsg('An error has occured.', true, err));
-  };
+  }
 
   renderLogo() {
     let avatar = <Avatar src={this.state.logo} />;
@@ -84,7 +84,7 @@ class Profile extends React.Component {
         </Badge>
       </div>
     );
-  };
+  }
 
   renderEditorLink() {
     if(this.state.loading || !this.state.streamer) return(<span />);
@@ -116,7 +116,7 @@ class Profile extends React.Component {
       }
     })
     .catch((err) => this.props.displayMsg('An error has occured', true, err));
-  };
+  }
 
   renderForm() {
     if(this.state.twitch_id === 0) return;
@@ -177,7 +177,7 @@ class Profile extends React.Component {
         {this.renderForm()}
       </Paper>
     );
-  };
+  }
 }
 
 Profile.propTypes = {

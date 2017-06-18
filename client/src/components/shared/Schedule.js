@@ -5,6 +5,8 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 import {formatTime} from '../../helpers';
+import IconButton from 'material-ui/IconButton';
+import Clear from 'material-ui/svg-icons/content/clear';
 
 const days = [
   'Monday',
@@ -17,6 +19,10 @@ const days = [
 ];
 
 class Schedule extends React.Component {
+
+  state = {
+    editMode: false
+  }
 
   formatSchedules(schedules) {
     const week = [];
@@ -48,6 +54,17 @@ class Schedule extends React.Component {
     )
   }
 
+  renderRightIcon = (schedule) => {
+    if(!this.state.editMode) return;
+    return (
+      <IconButton disabled={this.props.loading}
+                  onTouchTap={() => this.props.removeSchedule(schedule)}
+      >
+        <Clear />
+      </IconButton>
+    )
+  }
+
   renderList(week, i) {
     if(!week[i]) return;
     return(
@@ -59,10 +76,17 @@ class Schedule extends React.Component {
             primaryText={schedule.program.name}
             secondaryText={this.renderSecondaryText(schedule)}
             disabled={true}
+            rightIconButton ={this.renderRightIcon(schedule)}
           />
         )
       })
     )
+  }
+
+  componentWillMount() {
+    if(this.props.removeSchedule) this.setState({
+      editMode: true
+    });
   }
 
   render() {
@@ -86,9 +110,8 @@ class Schedule extends React.Component {
 }
 
 Schedule.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   schedules: PropTypes.array.isRequired,
-  editMode: PropTypes.bool,
   removeSchedule: PropTypes.func
 }
 

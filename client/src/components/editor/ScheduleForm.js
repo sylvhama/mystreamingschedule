@@ -17,7 +17,7 @@ class ScheduleForm extends React.Component {
     endHour: false
   }
 
-  selectChange = (e, key, payload) => this.setState({days: payload});
+  selectChange = (e, key, payload) => this.setState({days: payload})
 
   timeChange = (time, key) => {
     const d = new Date(time),
@@ -27,7 +27,7 @@ class ScheduleForm extends React.Component {
       [`${key}Min`]: min,
       [`${key}Hour`]: hour
     });
-  };
+  }
 
   onSubmit = (e) => {
     e.preventDefault();

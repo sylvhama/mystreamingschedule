@@ -26,7 +26,8 @@ exports.add = async function(req, res, next){
     days: req.body.days
   });
   try {
-    const schedule = await newSchedule.save();
+    let schedule = await newSchedule.save();
+    schedule = await Schedule.populate(schedule, 'program');
     if(schedule) res.json({schedule});
     else res.json({error: 'An error has occured while saving your schedule.'}); 
   }catch(err) {

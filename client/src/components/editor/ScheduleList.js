@@ -14,6 +14,7 @@ class ScheduleList extends React.Component {
         <CardText style={{paddingTop:'0'}}>
           <Schedule loading={this.props.loading}
                     schedules={this.props.schedules}
+                    removeSchedule={this.props.removeSchedule}
           />
         </CardText>
       </Card>
@@ -24,7 +25,6 @@ class ScheduleList extends React.Component {
 ScheduleList.propTypes = {
   loading: PropTypes.bool.isRequired,
   schedules: PropTypes.array.isRequired,
-  editMode: PropTypes.bool,
   removeSchedule: PropTypes.func
 }
 

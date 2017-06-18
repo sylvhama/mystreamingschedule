@@ -17,7 +17,7 @@ const initColor = '#FFFFFF',
 class Program extends React.Component {
 
   state = {
-    loading: false,
+    loading: true,
     _id: '',
     color: initColor,
     name: '',
@@ -37,14 +37,14 @@ class Program extends React.Component {
     this.setState({
       color: color.hex
     });
-  };
+  }
 
   onChange = (newValue, key, limit = 0) => {
     if(limit > 0 && newValue.length > limit) return;
     this.setState({
       [key]: newValue
     });
-  };
+  }
 
   onSubmitProgram = (e) => {
     e.preventDefault();
@@ -80,7 +80,7 @@ class Program extends React.Component {
       }
     })
     .catch((err) => this.props.displayMsg('An error has occured', true, err));
-  };
+  }
 
   editProgram = (program) => {
     if(this.state.loading) return;
@@ -133,11 +133,14 @@ class Program extends React.Component {
     .then((res) => res.json())
     .then((json) => {
       if(json.error) return this.props.displayMsg(json.error, true, json.error);
-      const programs = [...this.state.programs];
-      const newPrograms = programs.filter((program) => program._id !== programToRm._id);
+      const programs = [...this.state.programs],
+            newPrograms = programs.filter((program) => program._id !== programToRm._id),
+            schedules = [...this.state.schedules],
+            newSchedules = schedules.filter((schedule) => schedule.program._id !== programToRm._id);
       this.props.displayMsg(`Your program ${programToRm.name} has been removed.`);
       this.setState({
         programs: newPrograms,
+        schedules: newSchedules,
         loading: false
       });
       this.uneditProgram();
@@ -159,12 +162,38 @@ class Program extends React.Component {
     .then((json) => {
       if(json.error) this.props.displayMsg(json.error, true, json);
       else {
+        const schedules = [...this.state.schedules];
+        schedules.push(json.schedule);
         this.props.displayMsg('Your schedule has been added.');
-        this.setLoading(false);
+        this.setState({
+          schedules,
+          loading:false
+        });
       }
     })
     .catch((err) => this.props.displayMsg('An error has occured', true, err));
-  };
+  }
+
+  removeSchedule = (scheduleToRm) => {
+    this.setLoading(true);
+    fetch(`schedule/${scheduleToRm._id}`, {
+      credentials: 'include',
+      method: 'delete',
+      ...fetchOptions
+    }) 
+    .then((res) => res.json())
+    .then((json) => {
+      if(json.error) return this.props.displayMsg(json.error, true, json.error);
+      const schedules = [...this.state.schedules];
+      const newSchedules = schedules.filter((schedule) => schedule._id !== scheduleToRm._id);
+      this.props.displayMsg(`Your schedule has been removed.`);
+      this.setState({
+        schedules: newSchedules,
+        loading: false
+      });
+    })
+    .catch((err) => this.props.displayMsg('An error has occured.', true, err));
+  }
 
   componentWillMount() {
     const p1 = fetch('programs', {
@@ -195,6 +224,7 @@ class Program extends React.Component {
         <div style={style.common}>
           <ScheduleList loading={this.state.loading}
                         schedules={this.state.schedules}
+                        removeSchedule={this.removeSchedule}
           />
         </div>
         <div style={style.common}>
