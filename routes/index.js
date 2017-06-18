@@ -21,7 +21,7 @@ router.get('/user/:twitch_id', userController.get);
 router.get('/logo/:twitch_id', authController.isLoggedIn, authController.isSameUser, userController.updateLogo);
 router.put('/user/:twitch_id', authController.isLoggedIn, authController.isSameUser, userController.update);
 
-router.get('/api/streamers', userController.getStreamers);
+router.get('/api/search/:q', userController.searchStreamer);
 router.get('/api/:twitch_id/favorites', authController.isLoggedIn, authController.isSameUser, userController.getFavorites);
 
 // Set route to start OAuth link

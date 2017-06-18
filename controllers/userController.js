@@ -46,7 +46,21 @@ exports.get = async function(req, res, next){
   }
 }
 
-exports.getStreamers = async function(){}
+exports.searchStreamer = async function(req, res, next){
+  try {
+    const streamers = await User
+    .find({ 
+      name: { $regex: req.params.q, $options: 'im' } 
+    })
+    .sort({
+      name: 'asc'
+    })
+    .limit(5);
+    res.json(streamers);
+  }catch(err) {
+    return next(err);
+  }
+}
 
 exports.getFavorites = async function(){}
 

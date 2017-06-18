@@ -4,12 +4,12 @@ import { withRouter } from 'react-router';
 import Paper from 'material-ui/Paper';
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import People from 'material-ui/svg-icons/social/people';
+import Search from 'material-ui/svg-icons/action/search';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import Account from 'material-ui/svg-icons/action/account-box';
 import Lock from 'material-ui/svg-icons/action/lock-outline';
 
-const peopleIcon = <People />,
+const searchIcon = <Search />,
       favoriteIcon = <Favorite />,
       accountIcon = <Account />,
       lockIcon = <Lock />,
@@ -56,8 +56,8 @@ class Nav extends React.Component {
       <Paper zDepth={1}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
-            label="Streamers"
-            icon={peopleIcon}
+            label="Search streamer"
+            icon={searchIcon}
             onTouchTap={() => this.select('/')}
           />
           <BottomNavigationItem

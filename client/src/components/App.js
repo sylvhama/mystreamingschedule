@@ -9,7 +9,7 @@ import Snackbar from 'material-ui/Snackbar';
 
 import Header from './shared/Header';
 import Nav from './shared/Nav';
-import Streamers from './Streamers';
+import Search from './Search';
 import Streamer from './Streamer';
 import Favorites from './Favorites';
 import Login from './Login';
@@ -82,7 +82,9 @@ class App extends React.Component {
         <main style={style.main}>
           <Header />
           <Switch>
-            <Route path="/" exact component={Streamers} />
+            <Route path="/" exact render={() => (
+              <Search displayMsg={this.displayMsg} />
+            )}/>
             <Route path="/favorites" exact component={Favorites} />
             <Route path="/login" exact render={() => (
               this.state.loggedIn ? (
