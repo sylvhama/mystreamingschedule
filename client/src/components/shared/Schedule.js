@@ -1,5 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import Subheader from 'material-ui/Subheader';
+import Avatar from 'material-ui/Avatar';
+import {formatTime} from '../../helpers';
+
+const days = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday'
+];
 
 class Schedule extends React.Component {
 
@@ -20,12 +35,52 @@ class Schedule extends React.Component {
         return 0;
       });
     });
+    return week;
+  }
+
+  renderSecondaryText(schedule) {
+    return (
+      <span>
+        <strong>From {formatTime(schedule.startHour, schedule.startMin)} to {formatTime(schedule.endHour, schedule.endMin)}</strong>
+        <br />
+        {schedule.program.description}
+      </span>
+    )
+  }
+
+  renderList(week, i) {
+    if(!week[i]) return;
+    return(
+      week[i].map((schedule) => {
+        return (
+          <ListItem
+            key={schedule._id}
+            leftAvatar={<Avatar style={{margin: 8}} size={24} backgroundColor={schedule.program.color} />}
+            primaryText={schedule.program.name}
+            secondaryText={this.renderSecondaryText(schedule)}
+            disabled={true}
+          />
+        )
+      })
+    )
   }
 
   render() {
     const week = this.formatSchedules(this.props.schedules);
     return (
-      <p>coming soon</p>
+      <div>
+        {days.map((day, i) => {
+          return (
+            <div key={day}>
+              <List>
+                <Subheader>{day}</Subheader>
+                { this.renderList(week, i) }
+              </List>
+              <Divider />
+            </div>
+          )
+        })}
+      </div>
     );
   }
 }
