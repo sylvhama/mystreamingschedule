@@ -68,6 +68,7 @@ class Favorites extends React.Component {
       </p>
     );
     return this.state.favorites.map((streamer) => {
+      if(!streamer.streamer) return;
       return(
         <div key={streamer._id}
              style={style.streamer}>
