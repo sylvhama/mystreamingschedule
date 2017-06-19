@@ -20,4 +20,4 @@ export const fetchOptions = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   }
-};
+}

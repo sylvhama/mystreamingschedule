@@ -55,7 +55,7 @@ class Profile extends React.Component {
     .catch((err) => this.props.displayMsg('An error has occured', true, err));
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch(`user/${this.props.twitch_id}`) 
     .then((res) => res.json())
     .then((user) => {

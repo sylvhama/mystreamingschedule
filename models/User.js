@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  follows: [{ 
+  favorites: [{ 
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     default: []

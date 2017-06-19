@@ -44,7 +44,7 @@ class Nav extends React.Component {
     />
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({selectedIndex: routes[location.pathname]});
     this.props.history.listen((location, action) => {
       this.setState({selectedIndex: routes[location.pathname]});
@@ -56,7 +56,7 @@ class Nav extends React.Component {
       <Paper zDepth={1}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
-            label="Search streamer"
+            label="Search Streamer"
             icon={searchIcon}
             onTouchTap={() => this.select('/')}
           />

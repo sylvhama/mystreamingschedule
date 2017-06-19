@@ -38,7 +38,8 @@ exports.get = async function(req, res, next){
         name: user.name,
         description: user.description || '',
         streamer: user.streamer,
-        logo: user.logo || ''
+        logo: user.logo || '',
+        favorites: user.favorites || []
       }
     );
   }catch(err) {
@@ -50,7 +51,8 @@ exports.searchStreamer = async function(req, res, next){
   try {
     const streamers = await User
     .find({ 
-      name: { $regex: req.params.q, $options: 'im' } 
+      name: { $regex: req.params.q, $options: 'im' },
+      streamer: true 
     })
     .sort({
       name: 'asc'
@@ -62,7 +64,19 @@ exports.searchStreamer = async function(req, res, next){
   }
 }
 
-exports.getFavorites = async function(){}
+exports.getFavorites = async function(req, res, next){
+  try {
+    const favorites = await User.findOne({ twitch_id: req.params.twitch_id }).select('favorites').populate('favorites');
+    if (!favorites) return res.json(
+      {
+        error: 'User not found.'
+      }
+    );
+    res.json(favorites);
+  }catch(err) {
+    return next(err);
+  }
+}
 
 exports.update = async function(req, res, next){
   try {
@@ -80,6 +94,25 @@ exports.update = async function(req, res, next){
       res.json({ok: true});
     }
     else res.json({error: 'An error has occured while updating your profile.'}); 
+  }catch(err) {
+    return next(err);
+  }
+}
+
+exports.updateFavorites = async function(req, res, next){
+  try {
+    const response = await User.update(
+      { 
+        twitch_id: req.params.twitch_id 
+      },
+      {
+        favorites: req.body.favorites
+      }
+    );
+    if(response.n>0 && response.nModified>0) {
+      res.json({ok: true});
+    }
+    else res.json({error: 'An error has occured while updating your favorites.'}); 
   }catch(err) {
     return next(err);
   }

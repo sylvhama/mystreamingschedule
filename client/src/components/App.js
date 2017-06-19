@@ -43,7 +43,7 @@ class App extends React.Component {
     loggedIn: false,
     streamer: false,
     twitch_id: 0
-  };
+  }
 
   componentWillMount() {
     const user = JSON.parse(decodeURIComponent(getCookie('user')));
@@ -57,7 +57,7 @@ class App extends React.Component {
       streamer,
       twitch_id
     });
-  };
+  }
 
   displayMsg = (msg, isError = false, errObj = {}) => {
     if(typeof msg !== 'string') return;
@@ -66,15 +66,15 @@ class App extends React.Component {
       showMsg: true
     });
     if(isError) console.error(errObj);
-  };
+  }
 
   handleRequestClose = () => {
     this.setState({
       showMsg: false
     });
-  };
+  }
 
-  setStreamer = (streamer) => this.setState({streamer});
+  setStreamer = (streamer) => this.setState({streamer})
 
   render() {
     return (
@@ -83,9 +83,15 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route path="/" exact render={() => (
-              <Search displayMsg={this.displayMsg} />
+              <Search displayMsg={this.displayMsg}
+                      twitch_id={this.state.twitch_id}
+              />
             )}/>
-            <Route path="/favorites" exact component={Favorites} />
+            <Route path="/favorites" exact component={() => (
+              <Favorites displayMsg={this.displayMsg}
+                         twitch_id={this.state.twitch_id} 
+              /> 
+            )}/>
             <Route path="/login" exact render={() => (
               this.state.loggedIn ? (
                 <Redirect to="/profile"/>
