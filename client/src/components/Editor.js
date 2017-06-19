@@ -115,11 +115,17 @@ class Program extends React.Component {
   }
 
   updateProgram = (programToUp) => {
-    const programs = [...this.state.programs];
-    const newPrograms = programs.filter((program) => program._id !== programToUp._id);
+    const programs = [...this.state.programs],
+          newPrograms = programs.filter((program) => program._id !== programToUp._id);
     newPrograms.push(programToUp);
+    const schedules = [...this.state.schedules],
+          updatedSchedules = schedules.map((schedule) => {
+            if(schedule.program._id === programToUp._id) schedule.program = programToUp;
+            return schedule;
+          });
     this.setState({
-      programs: newPrograms
+      programs: newPrograms,
+      schedules: updatedSchedules
     });
   }
 
