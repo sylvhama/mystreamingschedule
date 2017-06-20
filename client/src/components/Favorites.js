@@ -50,6 +50,7 @@ class Favorites extends React.Component {
   }
 
   componentWillMount() {
+    if(!this.props.loggedIn) return;
     fetch(`api/${this.props.twitch_id}/favorites`,  {...fetchOptions}) 
     .then((res) => res.json())
     .then((res) => {
@@ -61,6 +62,11 @@ class Favorites extends React.Component {
   }
 
   renderFavorites() {
+    if(!this.props.loggedIn) return(
+      <p style={style.streamer}>
+        <em>You must be logged in if you want to add streamers to your favorites.</em>
+      </p>
+    );
     if(this.state.loading) return;
     if(this.state.favorites.length === 0) return(
       <p style={style.streamer}>
@@ -76,6 +82,7 @@ class Favorites extends React.Component {
             streamer={streamer}
             isFavorite={this.isFavorite}
             toggleFavorite={this.toggleFavorite}
+            loggedIn={this.props.loggedIn}
           />
         </div>
       );
@@ -94,7 +101,8 @@ class Favorites extends React.Component {
 
 Favorites.propTypes = {
   displayMsg: PropTypes.func.isRequired,
-  twitch_id: PropTypes.number.isRequired
+  twitch_id: PropTypes.number.isRequired,
+  loggedIn: PropTypes.bool.isRequired
 }
 
 export default Favorites;

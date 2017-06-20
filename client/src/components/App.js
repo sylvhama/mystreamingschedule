@@ -85,11 +85,13 @@ class App extends React.Component {
             <Route path="/" exact render={() => (
               <Search displayMsg={this.displayMsg}
                       twitch_id={this.state.twitch_id}
+                      loggedIn={this.state.loggedIn}
               />
             )}/>
             <Route path="/favorites" exact component={() => (
               <Favorites displayMsg={this.displayMsg}
-                         twitch_id={this.state.twitch_id} 
+                         twitch_id={this.state.twitch_id}
+                         loggedIn={this.state.loggedIn} 
               /> 
             )}/>
             <Route path="/login" exact render={() => (

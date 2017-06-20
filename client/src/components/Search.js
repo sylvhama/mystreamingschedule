@@ -65,6 +65,7 @@ class Search extends React.Component {
   }
 
   componentWillMount() {
+    if(!this.props.loggedIn) return;
     fetch(`user/${this.props.twitch_id}`) 
     .then((res) => res.json())
     .then((user) => {
@@ -88,6 +89,7 @@ class Search extends React.Component {
             streamer={streamer}
             isFavorite={this.isFavorite}
             toggleFavorite={this.toggleFavorite}
+            loggedIn={this.props.loggedIn}
           />
         </div>
       );
@@ -112,7 +114,8 @@ class Search extends React.Component {
 
 Search.propTypes = {
   displayMsg: PropTypes.func.isRequired,
-  twitch_id: PropTypes.number.isRequired
+  twitch_id: PropTypes.number.isRequired,
+  loggedIn: PropTypes.bool.isRequired
 }
 
 export default Search;

@@ -15,6 +15,18 @@ class StreamerPreview extends React.Component {
     return(<FavoriteBorder />);
   }
 
+  renderFavButton = (id) => {
+    if(!this.props.loggedIn) return;
+    else return (
+      <FlatButton
+        primary={true}
+        disabled={this.props.isFavorite(id)===false}
+        onTouchTap={() => this.props.toggleFavorite(id)}
+        icon={this.renderHearth(id)}
+      />
+    );
+  }
+
   render() {
     const streamer = this.props.streamer;
     let avatar = streamer.logo;
@@ -30,12 +42,7 @@ class StreamerPreview extends React.Component {
             <FlatButton
               label="See Schedule"
             />
-            <FlatButton
-              primary={true}
-              disabled={this.props.isFavorite(streamer._id)===false}
-              onTouchTap={() => this.props.toggleFavorite(streamer._id)}
-              icon={this.renderHearth(streamer._id)}
-            />
+            {this.renderFavButton(streamer._id)}
         </CardActions>
       </Card>
     )
@@ -45,7 +52,8 @@ class StreamerPreview extends React.Component {
 StreamerPreview.propTypes = {
   streamer: PropTypes.object.isRequired,
   isFavorite: PropTypes.func.isRequired,
-  toggleFavorite: PropTypes.func.isRequired
+  toggleFavorite: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired
 }
 
 export default StreamerPreview;
