@@ -11,7 +11,7 @@ I follow a lot of people on Twitch, mostly French streamers. Twitch UX is amazin
 - http://www.ogaming.tv/news/o-gaming-tv-la-grille-des-programmes/655
 - http://imgur.com/a/nBlTB
 
-I have notice few problems with those homemade solutions:
+I have noticed few problems with those homemade solutions:
 - It's not mobile friendly;
 - Some use images (no SEO);
 - Users without a website use a third party not initialy made for this purpose.
