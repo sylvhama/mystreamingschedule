@@ -6,7 +6,8 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run server\" \"npm run watch\" --names \"📦,💻\" --prefix name",
     "server": "nodemon ./start.js --ignore client/",
-    "watch": "webpack --progress --watch"
+    "watch": "webpack --progress --watch",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
