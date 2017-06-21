@@ -25,7 +25,7 @@ class Streamer extends React.Component {
     .then((data) => {
       const streamer = data[0],
             user = data[1];
-      if(user.error) return this.props.displayMsg(user.error, true, user.error);
+      if(user.error && this.props.loggedIn) return this.props.displayMsg(user.error, true, user.error);
       if(streamer.error) return this.props.displayMsg(streamer.error, true, streamer.error);
       if(streamer.notFound) return this.setState({notFound: true});
       this.setState({
