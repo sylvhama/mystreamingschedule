@@ -4,7 +4,8 @@
   "description": "Share your streaming schedule to the world!",
   "main": "start.js",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run server\" \"npm run watch\" --names \"📦,💻\" --prefix name",
+    "start": "node start.js",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run watch\" --names \"📦,💻\" --prefix name",
     "server": "nodemon ./start.js --ignore client/",
     "watch": "webpack --progress --watch",
     "build": "webpack -p"
