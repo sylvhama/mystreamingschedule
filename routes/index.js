@@ -33,7 +33,7 @@ router.get('/auth/twitch', passport.authenticate('twitch', {
 );
 // Set route for OAuth redirect
 router.get('/auth/twitch/callback', passport.authenticate('twitch', { 
-    successRedirect: '/',
+    successRedirect: '/favorites',
     failureRedirect: '/logout'
   })
 );
