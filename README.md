@@ -4,6 +4,20 @@ Progressive Web App which will help you to share your Twitch streaming schedule.
 It uses the **MERN** stack: MongoDB, Express, React, and Node.js.
 Demo: https://mystreamingschedule.herokuapp.com/
 
+## Why?
+I follow a lot of people on Twitch, mostly French streamers. Twitch UX is amazing, I always receive a notification which warns me that my favorites streamers are starting to broadcast. I often try to know when are the regular streams. However Twitch does not provide any tool which allows its users to create a schedule / planning. So users make their owns: 
+- http://zerator.com/programmation
+- https://domingo.tv/programmation
+- http://www.ogaming.tv/news/o-gaming-tv-la-grille-des-programmes/655
+- http://imgur.com/a/nBlTB
+
+I have notice few problems with those homemade solutions:
+- It's not mobile friendly;
+- Some use images (no SEO);
+- Users without a website use a third party not initialy made for this purpose.
+
+So I've tried to bring a safe, mobile friendly and easy to use solution in order to let Twitch users to share their streaming schedule.
+
 ## Available Scripts
 
 In the project directory, after running `npm install`, you can run:
