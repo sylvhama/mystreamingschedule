@@ -28,9 +28,10 @@ Authentification sample: https://github.com/TwitchDev/authentication-samples/tre
 
 For MongoDB I use https://mlab.com/, the app is hosted on https://heroku.com/ 
 
-## Babel
+## Babel and Polyfills
 
 ES2015 Presets and more are loaded via [babel-loader](https://github.com/babel/babel-loader). 
+Others polyfills: https://polyfill.io/v2/docs/
 
 ## Service Worker
 
