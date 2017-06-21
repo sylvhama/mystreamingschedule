@@ -7,6 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Avatar from 'material-ui/Avatar';
 import Face from 'material-ui/svg-icons/action/face';
 import Favorite from 'material-ui/svg-icons/action/favorite';
+import Open from 'material-ui/svg-icons/action/open-in-new';
 import FavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import {deepPurple500} from 'material-ui/styles/colors';
 
@@ -30,7 +31,14 @@ class StreamerPreview extends React.Component {
   }
 
   renderSeeButton(streamer) {
-    if(streamer.schedules) return;
+    if(streamer.schedules) return (
+      <FlatButton
+        href={`https://www.twitch.tv/${streamer.name.toLowerCase()}`}
+        target="_blank"
+        icon={<Open />}
+        label="Go to Twitch"
+      />
+    );
     return (    
       <Link to={`/${streamer.name.toLowerCase()}`}>
         <FlatButton
