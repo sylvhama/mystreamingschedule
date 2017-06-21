@@ -22,6 +22,7 @@ router.get('/logo/:twitch_id', authController.isLoggedIn, authController.isSameU
 router.put('/favorites/:twitch_id', authController.isLoggedIn, authController.isSameUser, userController.updateFavorites);
 router.put('/user/:twitch_id', authController.isLoggedIn, authController.isSameUser, userController.update);
 
+router.get('/api/streamer/:name', userController.getStreamer);
 router.get('/api/search/:q', userController.searchStreamer);
 router.get('/api/:twitch_id/favorites', authController.isLoggedIn, authController.isSameUser, userController.getFavorites);
 

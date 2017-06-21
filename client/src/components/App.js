@@ -121,6 +121,13 @@ class App extends React.Component {
                 <Editor displayMsg={this.displayMsg}/>
               ))
             )}/>
+            <Route path="/:name" render={(props) => (
+              <Streamer {...props} 
+                        displayMsg={this.displayMsg}
+                        twitch_id={this.state.twitch_id}
+                        loggedIn={this.state.loggedIn}
+              />
+            )}/>
             <Route component={NotFound} />
           </Switch>
           <nav style={style.nav}>

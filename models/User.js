@@ -26,6 +26,7 @@ const userSchema = new mongoose.Schema({
   },
   name: {
     type: String,
+    unique: true,
     trim: true,
     required: 'Please supply a name'
   },

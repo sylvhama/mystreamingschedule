@@ -2,7 +2,8 @@ const mongoose   = require('mongoose'),
       request    = require('request'),
       helpers = require('../handlers/helpers');
 
-const User = mongoose.model('User');
+const User = mongoose.model('User'),
+      Schedule = mongoose.model('Schedule');
 
 exports.findOrSave = async function(profile, done) {
   const user = {
@@ -40,6 +41,38 @@ exports.get = async function(req, res, next){
         streamer: user.streamer,
         logo: user.logo || '',
         favorites: user.favorites || []
+      }
+    );
+  }catch(err) {
+    return next(err);
+  }
+}
+
+exports.getStreamer = async function(req, res, next){
+  try {
+    const name =  `^${req.params.name}$`;
+    const user = await User.findOne(
+      { 
+        name: {'$regex': name, $options:'i'},
+        streamer: true
+      }
+    );
+    if (!user) return res.json(
+      {
+        notFound: true
+      }
+    );
+    const schedules = await Schedule.find({
+      author: user._id
+    })
+    .populate('program');
+    res.json(
+      {
+        _id: user._id,
+        name: user.name,
+        description: user.description || '',
+        logo: user.logo || '',
+        schedules
       }
     );
   }catch(err) {
@@ -89,7 +122,7 @@ exports.update = async function(req, res, next){
         streamer: req.body.streamer
       }
     );
-    if(response.n>0 && response.nModified>0) {
+    if(response.n>0) {
       req.user.streamer = req.body.streamer;
       res.json({ok: true});
     }
