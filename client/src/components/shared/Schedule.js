@@ -46,7 +46,7 @@ class Schedule extends React.Component {
 
   renderSecondaryText(schedule) {
     return (
-      <span>
+      <span style={{whiteSpace:'normal'}}>
         <strong>From {formatTime(schedule.startHour, schedule.startMin)} to {formatTime(schedule.endHour, schedule.endMin)}</strong>
         <br />
         {schedule.program.description}
