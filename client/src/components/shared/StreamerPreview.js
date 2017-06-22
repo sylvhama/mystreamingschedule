@@ -66,7 +66,8 @@ class StreamerPreview extends React.Component {
     return (
       <div>
         <Card>
-          <CardHeader
+          <CardHeader 
+            style={{ overflowX: 'hidden' }} 
             title={streamer.name}
             subtitle={streamer.description}
             avatar={avatar}
