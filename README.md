@@ -27,6 +27,9 @@ In the project directory, after running `npm install`, you can run:
 Runs the app in development mode (nodemon + webpack, see more in _package.json_).
 Open [http://localhost:7777/](http://localhost:777) to view it in the browser.
 
+### `npm run test`
+Runs unit tests and snapshot tests. It uses [Jest](https://facebook.github.io/jest/docs/tutorial-react.html). `.babelrc` is only used for those tests. 
+
 ### `npm run build` **On Prod branch only**
 
 Builds the client app for production to the `public` via [Webpack -p](https://webpack.js.org/guides/production-build/#the-automatic-way).

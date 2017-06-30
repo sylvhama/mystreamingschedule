@@ -1,0 +1,1042 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Schedule component renders the schedule correctly 1`] = `
+<div>
+  <div>
+    <div
+      style={
+        Object {
+          "muiPrepared": true,
+          "padding": "0px 0px 8px 0px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "color": "rgba(0, 0, 0, 0.54)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "lineHeight": "48px",
+            "muiPrepared": true,
+            "paddingLeft": 16,
+            "width": "100%",
+          }
+        }
+      >
+        Monday
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#8bc34a",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Lunch Play
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              12:00 pm
+               to 
+              04:00 pm
+            </strong>
+            <br />
+            Eat and Play!
+          </span>
+        </div>
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#3f51b5",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Retro Night
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              08:00 pm
+               to 
+              00:00 am
+            </strong>
+            <br />
+            Retrogaming discovery, mostly NES and Super NES.
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "backgroundColor": "#e0e0e0",
+          "border": "none",
+          "height": 1,
+          "margin": 0,
+          "marginLeft": 0,
+          "marginTop": -1,
+          "muiPrepared": true,
+        }
+      }
+    />
+  </div>
+  <div>
+    <div
+      style={
+        Object {
+          "muiPrepared": true,
+          "padding": "0px 0px 8px 0px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "color": "rgba(0, 0, 0, 0.54)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "lineHeight": "48px",
+            "muiPrepared": true,
+            "paddingLeft": 16,
+            "width": "100%",
+          }
+        }
+      >
+        Tuesday
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#8bc34a",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Lunch Play
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              12:00 pm
+               to 
+              04:00 pm
+            </strong>
+            <br />
+            Eat and Play!
+          </span>
+        </div>
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffeb3b",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Midnight Speed Run
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              08:00 pm
+               to 
+              00:00 am
+            </strong>
+            <br />
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "backgroundColor": "#e0e0e0",
+          "border": "none",
+          "height": 1,
+          "margin": 0,
+          "marginLeft": 0,
+          "marginTop": -1,
+          "muiPrepared": true,
+        }
+      }
+    />
+  </div>
+  <div>
+    <div
+      style={
+        Object {
+          "muiPrepared": true,
+          "padding": "0px 0px 8px 0px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "color": "rgba(0, 0, 0, 0.54)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "lineHeight": "48px",
+            "muiPrepared": true,
+            "paddingLeft": 16,
+            "width": "100%",
+          }
+        }
+      >
+        Wednesday
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#8bc34a",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Lunch Play
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              12:00 pm
+               to 
+              04:00 pm
+            </strong>
+            <br />
+            Eat and Play!
+          </span>
+        </div>
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#3f51b5",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Retro Night
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              08:00 pm
+               to 
+              00:00 am
+            </strong>
+            <br />
+            Retrogaming discovery, mostly NES and Super NES.
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "backgroundColor": "#e0e0e0",
+          "border": "none",
+          "height": 1,
+          "margin": 0,
+          "marginLeft": 0,
+          "marginTop": -1,
+          "muiPrepared": true,
+        }
+      }
+    />
+  </div>
+  <div>
+    <div
+      style={
+        Object {
+          "muiPrepared": true,
+          "padding": "0px 0px 8px 0px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "color": "rgba(0, 0, 0, 0.54)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "lineHeight": "48px",
+            "muiPrepared": true,
+            "paddingLeft": 16,
+            "width": "100%",
+          }
+        }
+      >
+        Thursday
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#8bc34a",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Lunch Play
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              12:00 pm
+               to 
+              04:00 pm
+            </strong>
+            <br />
+            Eat and Play!
+          </span>
+        </div>
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffeb3b",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Midnight Speed Run
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              08:00 pm
+               to 
+              00:00 am
+            </strong>
+            <br />
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "backgroundColor": "#e0e0e0",
+          "border": "none",
+          "height": 1,
+          "margin": 0,
+          "marginLeft": 0,
+          "marginTop": -1,
+          "muiPrepared": true,
+        }
+      }
+    />
+  </div>
+  <div>
+    <div
+      style={
+        Object {
+          "muiPrepared": true,
+          "padding": "0px 0px 8px 0px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "color": "rgba(0, 0, 0, 0.54)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "lineHeight": "48px",
+            "muiPrepared": true,
+            "paddingLeft": 16,
+            "width": "100%",
+          }
+        }
+      >
+        Friday
+      </div>
+      <div>
+        <div
+          onTouchEnd={[Function]}
+          open={null}
+          style={
+            Object {
+              "backgroundColor": null,
+              "color": "rgba(0, 0, 0, 0.87)",
+              "display": "block",
+              "fontSize": 16,
+              "lineHeight": "16px",
+              "marginLeft": 0,
+              "muiPrepared": true,
+              "paddingBottom": 16,
+              "paddingLeft": 72,
+              "paddingRight": 16,
+              "paddingTop": 20,
+              "position": "relative",
+              "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            }
+          }
+        >
+          <div
+            className={undefined}
+            size={24}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#8bc34a",
+                "borderRadius": "50%",
+                "color": "#ffffff",
+                "display": "inline-flex",
+                "fontSize": 12,
+                "height": 24,
+                "justifyContent": "center",
+                "left": 16,
+                "margin": 8,
+                "muiPrepared": true,
+                "position": "absolute",
+                "top": 16,
+                "userSelect": "none",
+                "width": 24,
+              }
+            }
+          />
+          <div
+            style={
+              Object {
+                "muiPrepared": true,
+              }
+            }
+          >
+            Lunch Play
+          </div>
+          <span
+            style={
+              Object {
+                "WebkitBoxOrient": null,
+                "WebkitLineClamp": null,
+                "color": "rgba(0, 0, 0, 0.54)",
+                "display": null,
+                "fontSize": 14,
+                "height": 16,
+                "lineHeight": "16px",
+                "margin": 0,
+                "marginTop": 4,
+                "muiPrepared": true,
+                "overflow": "hidden",
+                "textOverflow": "ellipsis",
+                "whiteSpace": "normal",
+              }
+            }
+          >
+            <strong>
+              From 
+              12:00 pm
+               to 
+              04:00 pm
+            </strong>
+            <br />
+            Eat and Play!
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "backgroundColor": "#e0e0e0",
+          "border": "none",
+          "height": 1,
+          "margin": 0,
+          "marginLeft": 0,
+          "marginTop": -1,
+          "muiPrepared": true,
+        }
+      }
+    />
+  </div>
+  <div>
+    <div
+      style={
+        Object {
+          "muiPrepared": true,
+          "padding": "0px 0px 8px 0px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "color": "rgba(0, 0, 0, 0.54)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "lineHeight": "48px",
+            "muiPrepared": true,
+            "paddingLeft": 16,
+            "width": "100%",
+          }
+        }
+      >
+        Saturday
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "backgroundColor": "#e0e0e0",
+          "border": "none",
+          "height": 1,
+          "margin": 0,
+          "marginLeft": 0,
+          "marginTop": -1,
+          "muiPrepared": true,
+        }
+      }
+    />
+  </div>
+  <div>
+    <div
+      style={
+        Object {
+          "muiPrepared": true,
+          "padding": "0px 0px 8px 0px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "color": "rgba(0, 0, 0, 0.54)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "lineHeight": "48px",
+            "muiPrepared": true,
+            "paddingLeft": 16,
+            "width": "100%",
+          }
+        }
+      >
+        Sunday
+      </div>
+    </div>
+    <hr
+      style={
+        Object {
+          "backgroundColor": "#e0e0e0",
+          "border": "none",
+          "height": 1,
+          "margin": 0,
+          "marginLeft": 0,
+          "marginTop": -1,
+          "muiPrepared": true,
+        }
+      }
+    />
+  </div>
+</div>
+`;
