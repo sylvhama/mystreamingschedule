@@ -1,7 +1,7 @@
 # My Streaming Schedule
 
 Progressive Web App which will help you to share your Twitch streaming schedule.
-It uses the **MERN** stack: MongoDB, Express, React, and Node.js.
+It uses the **MERN** stack: MongoDB, Express, React and Node.js.
 Demo: https://mystreamingschedule.herokuapp.com/
 
 ## Why?
