@@ -1,5 +1,7 @@
 # My Streaming Schedule
 
+[![Build Status](https://travis-ci.com/sylvhama/mystreamingschedule.svg?branch=master)](https://travis-ci.com/sylvhama/mystreamingschedule)
+
 Progressive Web App which will help you to share your Twitch streaming schedule.
 It uses the **MERN** stack: MongoDB, Express, React and Node.js.
 Demo: https://mystreamingschedule.herokuapp.com/
