@@ -1,38 +1,43 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   entry: {
-    bundle: './client/src/index.js',
-  }, 
-  output: {
-    path: path.resolve(__dirname, 'client/public'),
-    filename: '[name].js'
+    bundle: "./client/src/index.js"
   },
-  devtool: 'eval-source-map',
+  output: {
+    path: path.resolve(__dirname, "client/public"),
+    filename: "[name].js"
+  },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            "presets": [
+            presets: [
               "react",
-              ["env", {
-                "targets": {
-                  "browsers": ["last 2 versions", "safari >= 7"]
+              [
+                "env",
+                {
+                  targets: {
+                    browsers: ["last 2 versions", "safari >= 7"]
+                  }
                 }
-              }]
+              ]
             ],
-            "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+            plugins: [
+              "transform-class-properties",
+              "transform-object-rest-spread"
+            ]
           }
         }
       }
-    ],
+    ]
   }
 };
